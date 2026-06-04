@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 
-# Пайдаланушы валидациясы
+# Пайдаланушы валидациясы 
 class UserCreate(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     email: EmailStr  # Email форматын автоматты тексереді
@@ -11,7 +11,7 @@ class UserLogin(BaseModel):
     username: str
     password: str
 
-# Тауар валидациясы
+# Тауар валидациясы 
 class ProductCreate(BaseModel):
     name: str = Field(..., min_length=2)
     category: str
@@ -23,7 +23,7 @@ class ProductResponse(ProductCreate):
     class Config:
         from_attributes = True
 
-# Тапсырыс валидациясы
+# Тапсырыс валидациясы 
 class OrderCreate(BaseModel):
     product_id: int
     quantity: int = Field(1, ge=1)
